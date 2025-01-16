@@ -47,6 +47,26 @@ export async function getHomePageData() {
               },
             },
           },
+          "layout.dream-home": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
+          "layout.process-section": {
+            populate: {
+              steps: {
+                populate: true,
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
         },
       },
     },
@@ -69,6 +89,10 @@ export async function getGlobalData() {
     populate: [
       "header.logoText",
       "header.ctaButton",
+      "header.dreamHome",
+      "header.howItWorks",
+      "header.projectGallery",
+      "header.pricings",
       "footer.logoText",
       "footer.socialLink",
     ],
