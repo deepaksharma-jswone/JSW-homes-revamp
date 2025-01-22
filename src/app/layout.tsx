@@ -37,7 +37,7 @@ export default async function RootLayout({
 }>) {
   const globalData = await getGlobalData();
   // console.log("here!!");
-  // console.dir(globalData, { depth: null });
+  //  console.dir(globalData, { depth: null });
 
   return (
     <html lang="en">

@@ -24,7 +24,7 @@ export function StrapiImage({
 
   return (
     <Image
-      layout="responsive"
+    // layout="responsive"
       src={imageUrl}
       alt={alt}
       className={className}

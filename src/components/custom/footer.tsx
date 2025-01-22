@@ -27,12 +27,28 @@ function selectSocialIcon(url: string) {
 }
 
 export function Footer({ data }: Readonly<FooterProps>) {
-  const { logoText, socialLink, text } = data;
+  const { logoText, socialLink, text, pages } = data;
+  console.log(pages);
   return (
-    <div className="dark bg-gray-900 text-white py-8">
-      <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between">
+    <div className="dark bg-[#030712] text-white py-20">
+      <div className="container mx-auto px-4 flex flex-col items-start justify-between">
         <Logo dark text={logoText.text} />
-        <p className="mt-4 md:mt-0 text-sm text-gray-300">{text}</p>
+        <p className="mt-4 md:mt-0 text-sm text-gray-300 pt-4 pb-8">{text}</p>
+          {pages.map((page) => (
+            <div key={page.id} className="w-full">
+              <p className="text-white text-left text-sm font-medium py-2.5">
+                {page.heading}
+              </p>
+              <ul className="grid grid-cols-2 gap-x-10 gap-y-5">
+                {page.link.map((link) => (
+                  <li key={link.id}>
+                    <Link href={link.url} className="text-white text-left text-sm font-normal py-2.5">{link.text}</Link>
+                  </li>
+                ))}
+              </ul>
+              <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+            </div>
+          ))}
         <div className="flex items-center space-x-4">
           {socialLink.map((link) => {
             return (

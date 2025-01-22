@@ -16,8 +16,8 @@ export function Logo({
   dark = false,
 }: Readonly<LogoProps>) {
   return (
-    <Link className="flex items-center gap-2" href="/">
-      <HomesIcon className={"ml-20"} />
+    <Link className="" href="/">
+      <HomesIcon className="md:ml-20" />
       {/* <span
         className={`text-lg font-semibold ${
           dark ? "text-white" : "text-slate-900"

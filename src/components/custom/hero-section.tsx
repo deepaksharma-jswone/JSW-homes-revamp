@@ -32,42 +32,48 @@ export function HeroSection({ data }: { readonly data: HeroSectionProps }) {
 
   return (
     <header>
-      <div className="flex w-full justify-between">
-        <div className="w-1/2 flex items-center justify-center flex-col gap-10">
-          <h1 className="text-7xl font-medium text-left md:text-5xl sm:text-3xl lg:text-7xl">
+      <div className="flex w-full justify-between flex-col-reverse gap-10 md:flex-row">
+        <div className="md:w-1/2 flex items-center justify-center flex-col gap-5">
+          <h1 className="text-5xl font-medium text-left">
             You Dream,
             <br />
             We <span className="text-[#FC7F11]">Deliver.</span>
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-slate-500">
-            {subHeading.split("JSW")[0]}JSW
+          <p className="text-lg text-slate-500 text-center">
+            {subHeading.split("One")[0]}One
             <br />
-            {subHeading.split("JSW")[1]}
+            {subHeading.split("One")[1]}
           </p>
-          <div className="flex gap-10">
+          <div className="flex items-center justify-between gap-10 ml-5 mr-5">
             <span>
-              <p className="text-5xl font-medium md:text-5xl sm:text-3xl">300+</p>
-              <p className="text-slate-500">Quality Checks</p>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">
+                300+
+              </p>
+              <p className="text-slate-500 text-sm">Quality Checks</p>
             </span>
             <span>
-              <p className="text-5xl font-medium md:text-5xl sm:text-3xl">10</p>
-              <p className="text-slate-500">Years Warrenty*</p>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">10</p>
+              <p className="text-slate-500 text-sm">Years Warrenty*</p>
             </span>
             <span>
-              <p className="text-5xl font-medium md:text-5xl sm:text-3xl">100+</p>
-              <p className="text-slate-500">Happy Families</p>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">
+                100+
+              </p>
+              <p className="text-slate-500 text-sm">Happy Families</p>
             </span>
           </div>
-          <Button className="mt-1">{link.text}</Button>
+          <Button className="rounded-lg mb-10" size={"full"}>
+            {link.text}
+          </Button>
         </div>
-        <div className="w-1/2 relative">
+        <div className="flex justify-center md:w-1/2 relative p-5 md:p-10">
           <StrapiImage
             alt={image.alternativeText ?? "no alternative text"}
             src={image.url}
             fill={true}
-            width={0}
-            height={0}
-            className="w-full h-full top-0 left-0 object-cover"
+            width={328}
+            height={189}
+            className="w-full aspect-[16/9] top-0 left-0 object-cover rounded-lg md:rounded-none"
           />
         </div>
       </div>

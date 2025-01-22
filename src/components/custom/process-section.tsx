@@ -4,6 +4,7 @@ import handshake from "../../../public/handshake.svg";
 import home from "../../../public/home.svg";
 import key from "../../../public/key.svg";
 import speaker from "../../../public/speaker.svg";
+import { Button } from "../ui/button";
 
 function getIcon(name: string) {
   switch (name) {
@@ -47,14 +48,15 @@ export function ProcessSection({
 }: {
   readonly data: ProcessSectionProps;
 }) {
-  const { steps, heading, subHeading } = data;
+  const { steps, heading, subHeading, ctaButton } = data;
   // console.dir(steps, { depth: null });
   return (
-    <div className="flex w-full items-center justify-center flex-col gap-10 p-20 bg-[#F6F5EF]">
-      <h1 className="text-7xl font-medium text-left md:text-5xl sm:text-3xl lg:text-7xl">
-        {heading}
+    <div className="flex w-full items-center justify-center flex-col gap-5 md:gap-10 md:p-20 p-5 bg-[#F6F5EF]">
+      <h1 className="text-3xl font-medium text-center md:text-left md:text-5xl sm:text-3xl lg:text-7xl">
+        {/* {heading} */}A glimpse into our{" "}
+        <span className="text-[#FC7F11]">building process</span>
       </h1>
-      <p className="text-lg md:text-xl lg:text-2xl text-slate-500">
+      <p className="text-lg md:text-xl lg:text-2xl text-slate-500 text-center">
         {subHeading}
       </p>
       <div className="flex-1">
@@ -63,16 +65,25 @@ export function ProcessSection({
             {steps.map((feature) => (
               <div
                 key={feature.id}
-                className="flex flex-col items-center text-center"
+                className="flex md:flex-col items-center text-center gap-10"
               >
-                {getIcon(feature.icon)}
-                <h2 className="mb-4 text-2xl font-bold">{feature.heading}</h2>
-                <p className="text-gray-500">{feature.subHeading}</p>
+                <span className="w-1/4">{getIcon(feature.icon)}</span>
+                <span className="w-3/4">
+                  <h2 className="mb-4 text-lg md:text-2xl font-bold text-left">
+                    {feature.heading}
+                  </h2>
+                  <p className="text-gray-500 text-left text-sm">
+                    {feature.subHeading}
+                  </p>
+                </span>
               </div>
             ))}
           </div>
         </section>
       </div>
+      <Button className="mt-1 rounded-lg" variant={"outline"} size={"full"}>
+        {ctaButton.text}
+      </Button>
     </div>
   );
 }

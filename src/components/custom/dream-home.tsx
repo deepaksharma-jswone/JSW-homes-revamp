@@ -31,25 +31,29 @@ export function DreamHomeSection({
   readonly data: DreamHomeSectionProps;
 }) {
   const { subHeading, image, ctaButton } = data;
-//   console.log("data", data);
+  //   console.log("data", data);
 
   return (
-    <div className="flex w-full items-center justify-center flex-col gap-10 p-20 bg-[#FCFCF7]">
-      <h1 className="text-7xl font-medium text-left md:text-5xl sm:text-3xl lg:text-7xl">
-        Buil your <span className="text-[#FC7F11]">dream home.</span>
+    <div className="flex items-center justify-center p-5 flex-col gap-5 bg-[#FCFCF7]">
+      <h1 className="text-3xl font-medium text-center md:text-left md:text-5xl sm:text-3xl lg:text-7xl">
+        Buil your{" "}
+        <span className="text-[#FC7F11]">
+          <br />
+          Dream home.
+        </span>
       </h1>
-      <p className="text-lg md:text-xl lg:text-2xl text-slate-500">
+      <p className="text-base text-center md:text-xl lg:text-2xl text-slate-500">
         {subHeading}
       </p>
       <StrapiImage
         alt={image.alternativeText ?? "no alternative text"}
         src={image.url}
         fill={true}
-        width={0}
-        height={0}
-        className="w-full h-full top-0 left-0 object-cover"
+        width={328}
+        height={260}
+        className="w-full h-full top-0 left-0 object-cover rounded-lg md:rounded-none"
       />
-      <Button className="mt-1">{ctaButton.text}</Button>
+      <Button className="rounded-lg mb-10 w-full" size={"full"}>{ctaButton.text}</Button>
     </div>
   );
 }
