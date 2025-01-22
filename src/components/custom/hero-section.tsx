@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { StrapiImage } from "../strapi-image";
+import { Button } from "../ui/button";
 
 interface Image {
   id: number;
@@ -18,36 +19,63 @@ interface HeroSectionProps {
   id: number;
   documentId: string;
   __component: string;
-  heading: string;
+  Heading: string;
   subHeading: string;
   image: Image;
   link: Link;
 }
 
 export function HeroSection({ data }: { readonly data: HeroSectionProps }) {
-  console.dir(data, { depth: null });
-  const { heading, subHeading, image, link } = data;
+  // console.dir(data, { depth: null });
+  const { Heading, subHeading, image, link } = data;
+  // console.log("data", data);
 
   return (
-    <header className="relative h-[600px] overflow-hidden">
-      <StrapiImage
-        alt={image.alternativeText ?? "no alternative text"}
-        className="absolute inset-0 object-cover w-full h-full aspect/16:9"
-        src={image.url}
-        height={1080}
-        width={1920}
-      />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white bg-black bg-opacity-40">
-        <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-          {heading}
-        </h1>
-        <p className="mt-4 text-lg md:text-xl lg:text-2xl">{subHeading}</p>
-        <Link
-          className="mt-8 inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white rounded-md shadow hover:bg-gray-100"
-          href={link.url}
-        >
-          {link.text}
-        </Link>
+    <header>
+      <div className="flex w-full justify-between flex-col-reverse gap-10 md:flex-row">
+        <div className="md:w-1/2 flex items-center justify-center flex-col gap-5">
+          <h1 className="text-5xl font-medium text-left">
+            You Dream,
+            <br />
+            We <span className="text-[#FC7F11]">Deliver.</span>
+          </h1>
+          <p className="text-lg text-slate-500 text-center">
+            {subHeading.split("One")[0]}One
+            <br />
+            {subHeading.split("One")[1]}
+          </p>
+          <div className="flex items-center justify-between gap-10 ml-5 mr-5">
+            <span>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">
+                300+
+              </p>
+              <p className="text-slate-500 text-sm">Quality Checks</p>
+            </span>
+            <span>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">10</p>
+              <p className="text-slate-500 text-sm">Years Warrenty*</p>
+            </span>
+            <span>
+              <p className="text-lg font-medium md:text-5xl sm:text-3xl">
+                100+
+              </p>
+              <p className="text-slate-500 text-sm">Happy Families</p>
+            </span>
+          </div>
+          <Button className="rounded-lg mb-10" size={"full"}>
+            {link.text}
+          </Button>
+        </div>
+        <div className="flex justify-center md:w-1/2 relative p-5 md:p-10">
+          <StrapiImage
+            alt={image.alternativeText ?? "no alternative text"}
+            src={image.url}
+            fill={true}
+            width={328}
+            height={189}
+            className="w-full aspect-[16/9] top-0 left-0 object-cover rounded-lg md:rounded-none"
+          />
+        </div>
       </div>
     </header>
   );

@@ -1,3 +1,10 @@
+import Image from "next/image";
+
+import handshake from "../../../public/handshake.svg";
+import home from "../../../public/home.svg";
+import key from "../../../public/key.svg";
+import speaker from "../../../public/speaker.svg";
+
 function getIcon(name: string) {
   switch (name) {
     case "CLOCK_ICON":
@@ -6,6 +13,14 @@ function getIcon(name: string) {
       return <CheckIcon className="w-12 h-12 mb-4 text-gray-900" />;
     case "CLOUD_ICON":
       return <CloudIcon className="w-12 h-12 mb-4 text-gray-900" />;
+    case "HANDSHAKE_ICON":
+      return <HanshakeIcon className="w-12 h-12 mb-4 text-gray-900" />;
+    case "HOME_ICON":
+      return <HomeIcon className="w-12 h-12 mb-4 text-gray-900" />;
+    case "KEY_ICON":
+      return <KeyIcon className="w-12 h-12 mb-4 text-gray-900" />;
+    case "SPEAKER_ICON":
+      return <SpeakerIcon className="w-12 h-12 mb-4 text-gray-900" />;
     default:
       return null;
   }
@@ -32,7 +47,7 @@ export function FeatureSection({
   readonly data: FeatureSectionProps;
 }) {
   const { feature } = data;
-  console.dir(feature, { depth: null });
+  // console.dir(feature, { depth: null });
   return (
     <div className="">
       <div className="flex-1">
@@ -111,4 +126,20 @@ function CloudIcon(props: any) {
       <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
     </svg>
   );
+}
+
+function HanshakeIcon(props: any) {
+  return <Image {...props} src={handshake} alt={"handshake svg"} />;
+}
+
+function KeyIcon(props: any) {
+  return <Image {...props} src={key} alt={"key svg"} />;
+}
+
+function HomeIcon(props: any) {
+  return <Image {...props} src={home} alt={"home svg"} />;
+}
+
+function SpeakerIcon(props: any) {
+  return <Image {...props} src={speaker} alt={"speaker svg"} />;
 }

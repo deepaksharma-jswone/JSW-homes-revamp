@@ -25,8 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata = await getGlobalPageMetadata();
 
   return {
-    title: metadata?.data?.title ?? "Epic Next Course",
-    description: metadata?.data?.description ?? "Epic Next Course",
+    title: metadata?.data?.title ?? "JSW Homes",
+    description: metadata?.data?.description ?? "JSW Homes",
   };
 }
 
@@ -36,8 +36,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalData = await getGlobalData();
-  console.log("here!!");
-  console.dir(globalData, { depth: null });
+  // console.log("here!!");
+  //  console.dir(globalData, { depth: null });
 
   return (
     <html lang="en">

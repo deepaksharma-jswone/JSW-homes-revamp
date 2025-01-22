@@ -47,6 +47,75 @@ export async function getHomePageData() {
               },
             },
           },
+          "layout.dream-home": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
+          "layout.process-section": {
+            populate: {
+              steps: {
+                populate: true,
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
+          "layout.sub-hero-section": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              feature: {
+                populate: true,
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
+          "layout.gallery-section": {
+            populate: {
+              carousal: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+              ctaButton: {
+                populate: true,
+              },
+            },
+          },
+          "layout.customer-section": {
+            populate: {
+              carousel: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+            },
+          },
+          "layout.experience-section": {
+            populate: {
+              carousel: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -66,12 +135,27 @@ export async function getGlobalData() {
   const url = new URL("/api/global", baseUrl);
 
   url.search = qs.stringify({
-    populate: [
-      "header.logoText",
-      "header.ctaButton",
-      "footer.logoText",
-      "footer.socialLink",
-    ],
+    populate: {
+      header: {
+        populate: [
+          "logoText",
+          "ctaButton",
+          "dreamHome",
+          "howItWorks",
+          "projectGallery",
+          "pricings",
+        ],
+      },
+      footer: {
+        populate: {
+          logoText: true,
+          socialLink: true,
+          pages: {
+            populate: ["link"],
+          },
+        },
+      },
+    },
   });
 
   return await fetchData(url.href);

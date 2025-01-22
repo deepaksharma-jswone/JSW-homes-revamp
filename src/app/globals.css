@@ -3,7 +3,119 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+}
+
+.embla {
+  max-width: 48rem;
+  margin: auto;
+  --slide-height: 24rem;
+  --slide-spacing: 1rem;
+  --container-height: 40rem;
+  --slide-size: 70%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+  /* max-width: 100%; */
+}
+.embla__slide {
+  /* border: 5px solid black; */
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  /* max-height: var(--container-height); */
+  padding-left: var(--slide-spacing);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+}
+
+.embla__slide {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.embla__slide__img {
+  border-radius: 0.5rem;
+  display: block;
+  height: var(--slide-height);
+  width: 100%;
+  object-fit: cover;
+  background: transparent;
+  box-shadow: 0 10px 0.5rem 0.5rem rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  /* overflow: hidden; */
+}
+
+.embla__slide:not(.is-snapped) {
+  opacity: 0.36;
+}
+
+.embla__controls {
+  display: grid;
+  /* grid-template-columns: auto 1fr; */
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.8rem;
+}
+
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 90px;
+  background-color: #dbdbdb;
+  /* gap: rem; */
+}
+
+.embla__dot {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0 5px;
+  /* width: 5px; */
+  height: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #8c8f92;
+}
+.embla__dot:after {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 5px;
+  height: 5px;
+  /* border-radius: 50%; */
+  display: flex;
+  align-items: center;
+  content: "";
+}
+.embla__dot--selected:after {
+  box-shadow: inset 0 0 0 0.2rem var(--text-body);
+  background-color: #464646;
+  width: 25px;
+  /*Adjustthewidthtostretchtheselecteddot*/
+  height: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  content: "";
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 
 @layer base {
@@ -33,6 +145,7 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --md-text: 1.125rem;
   }
   .dark {
     --background: 0 0% 3.9%;
